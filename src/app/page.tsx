@@ -1,3 +1,4 @@
+'use client'
 /* eslint-disable react/no-unescaped-entities */
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
@@ -7,20 +8,68 @@ import { Icons } from '@/components/Icons'
 import Link from 'next/link'
 import { CloudLogo } from '@/components/CloudLogo'
 import { VideoEmbed } from '@/components/VideoEmbed'
+import { TestimonyCarousel } from '@/components/TestimonyCarousel'
+import ContactForm from '@/components/ContactForm'
+
+const scrollTo = (elementId: string) => {
+  const element = document.getElementById(elementId)
+  element?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+}
+
+//TODO: Make Mobile-friendly
+
+const videos = [
+  { src: 'https://www.youtube.com/embed/watMOkqVslQ?controls=0', title: 'Sleeping Sun' },
+  { src: 'https://www.youtube.com/embed/cpHlhJU009I?controls=0', title: 'The Unforgiven' },
+  { src: 'https://www.youtube.com/embed/yp6jf_dRKIk?controls=0', title: 'Fear of the Dark' },
+  { src: 'https://www.youtube.com/embed/6tvlaQTKv7o?controls=0', title: 'Bring Me to Life' },
+  // { src: 'https://www.youtube.com/embed/q65x5gU8bBU?controls=0', title: 'Chop Suey!' },
+  // { src: 'https://www.youtube.com/embed/Xmt_byRNaTY?controls=0', title: 'Nemo' },
+]
+
+const testimonies = [
+  {
+    client: 'Heidi & Tero',
+    date: '2022-05-07',
+    message: [
+      'We had Elvann play at our wedding five songs in concert style and she did a phenomenal performance. Her harp play and singing was absolutely stunning and exactly what we wanted.  ',
+      "We especially liked how Elvann played Nightwish - Amaranth, which was also our song at our wedding ceremony as we left the church, and as it was something Elvann hadn't played before and what was considered hard to play with a harp, but Elvann nailed it.  Elvann is a true professional and i would recommend her to everyone.",
+      'Thank you once more! ❤️',
+    ],
+  },
+  {
+    client: 'Lisa & Aleksi',
+    date: '2022-08-20',
+    message: [
+      'We were so happy to find and have Elvann to perform in our wedding, it truly elevated our wedding atmosphere. Her touching and artful harp sets were like something out of a fairytale. All of our guests were astonished to hear her perform. ',
+      'In our wedding she played two sets, which were beautiful yet different. The first with singing accompanied by the harp, and the other with more ambient harp music, which matched perfectly to the background of the dinner. All the planning and arrangements went super smoothly and she was very professional all the way.',
+      'She had a wide variety of different styles from which we got just what we wanted. Would recommend her anytime!',
+    ],
+  },
+  {
+    client: 'Tiina & Mikael',
+    date: '2022-09-10',
+    message: [
+      "Elvann played at our wedding on September 2022. She played walking down the aisle music and after the ceremony we had a small three song concert where we got to hear her beautiful voice with the amazing harp. From there she continued with background music with only the harp while guests were congratulating us and the atmosphere couldn't have been better. At the wedding and several weeks after the wedding we kept hearing from our guests how much they loved Elvann.",
+      'We had many things to make our wedding special for us and for our guests. Elvann was definitely one of those that really made the occasion super special.',
+      'Also, setting everything up and planning the day was super easy with her. An all and all ten out of ten experience, can not recommend enough. Great job, thank you again!',
+    ],
+  },
+]
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <hr className="h-px my-8  border-1 border-primary/10 w-full" />
+      <hr className="h-px my-8 border-1 border-primary/10 w-full" />
       <AboutSection />
-      <hr className="h-px my-8  border-1 border-primary/10 w-full" />
+      <hr className="h-px my-8 border-1 border-primary/10 w-full" />
       <CloudLogosSection />
-      <hr className="h-px my-8  border-1 border-primary/10 w-full" />
+      <hr className="h-px my-8 border-1 border-primary/10 w-full" />
       <VideoGridSection />
-      <hr className="h-px my-8  border-1 border-primary/10 w-full" />
+      <hr className="h-px my-8 border-1 border-primary/10 w-full" />
       <TestimonySection />
-      <hr className="h-px my-8  border-1 border-primary/10 w-full" />
+      <hr className="h-px my-8 border-1 border-primary/10 w-full" />
       <ContactSection />
     </>
   )
@@ -28,7 +77,7 @@ export default function Home() {
 
 const HeroSection = () => {
   return (
-    <div id="hero-section" className="flex gap-8 w-full">
+    <div id="hero-section" className="flex gap-8 w-full pt-10">
       <Image src={heroImage} priority={true} className="rounded-lg object-cover" sizes="25vw" alt="Hero Image" />
       <div id="hero-content" className="flex flex-col gap-6 py-4">
         <h1>Harpist & Vocalist for your special events</h1>
@@ -49,7 +98,7 @@ const HeroSection = () => {
               </Button>
             </Link>
           </div>
-          <Button>
+          <Button variant="default" onClick={() => scrollTo('contact-section')}>
             <Icons.calendar className="mr-2 h-4 w-4" /> Book now!
           </Button>
         </div>
@@ -99,15 +148,6 @@ const CloudLogosSection = () => {
   )
 }
 
-const videos = [
-  { src: 'https://www.youtube.com/embed/watMOkqVslQ?controls=0', title: 'Sleeping Sun' },
-  { src: 'https://www.youtube.com/embed/cpHlhJU009I?controls=0', title: 'The Unforgiven' },
-  { src: 'https://www.youtube.com/embed/yp6jf_dRKIk?controls=0', title: 'Fear of the Dark' },
-  { src: 'https://www.youtube.com/embed/6tvlaQTKv7o?controls=0', title: 'Bring Me to Life' },
-  { src: 'https://www.youtube.com/embed/q65x5gU8bBU?controls=0', title: 'Chop Suey!' },
-  { src: 'https://www.youtube.com/embed/Xmt_byRNaTY?controls=0', title: 'Nemo' },
-]
-
 const VideoGridSection = () => {
   return (
     <div id="video-grid-section" className="grid grid-cols-1 gap-8 w-full items-center text-center">
@@ -129,9 +169,19 @@ const VideoGridSection = () => {
 }
 
 const TestimonySection = () => {
-  return <div>Testimonies</div>
+  return (
+    <div id="testimonies-section" className="flex flex-col gap-8 w-full items-center justify-center text-center">
+      <h2>Testimonies</h2>
+      <TestimonyCarousel testimonies={testimonies} />
+    </div>
+  )
 }
 
 const ContactSection = () => {
-  return <div>Contact</div>
+  return (
+    <div id="contact-section" className="flex flex-col gap-8 w-full items-center justify-center text-center">
+      <h2>Contact</h2>
+      <ContactForm />
+    </div>
+  )
 }

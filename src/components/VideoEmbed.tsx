@@ -9,6 +9,7 @@ export const VideoEmbed: FC<VideoEmbedProps> = ({ src, title }) => {
   return (
     <div className="aspect-video">
       <iframe
+        className="rounded-md"
         width="100%"
         height="100%"
         src={src}

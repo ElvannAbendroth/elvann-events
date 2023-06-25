@@ -1,3 +1,4 @@
+import { MessageSquare } from 'lucide-react'
 import {
   AlertTriangle,
   ArrowRight,
@@ -24,7 +25,9 @@ import {
   User,
   X,
   Calendar,
+  AtSign,
   type Icon as LucideIcon,
+  Tag,
 } from 'lucide-react'
 
 export type Icon = LucideIcon
@@ -105,4 +108,7 @@ export const Icons = {
   ),
   check: Check,
   calendar: Calendar,
+  at: AtSign,
+  tag: Tag,
+  message: MessageSquare,
 }
