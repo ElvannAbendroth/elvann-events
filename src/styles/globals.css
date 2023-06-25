@@ -84,7 +84,7 @@
   h4,
   h5,
   h6 {
-    @apply font-display uppercase font-semibold;
+    @apply font-display uppercase font-semibold text-primary-title;
   }
 
   h1 {
