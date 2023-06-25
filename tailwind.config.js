@@ -1,7 +1,104 @@
 /** @type {import('tailwindcss').Config} */
+
+const themeSwapper = require('tailwindcss-theme-swapper')
+const colors = require('tailwindcss/colors')
+
+const darkest = colors.gray[950]
+const lightest = colors.gray[100]
+
+const themeSwapperPlugin = themeSwapper({
+  themes: [
+    {
+      name: 'base',
+      selectors: [':root', '[data-theme="light"]'],
+      theme: {
+        colors: {
+          background: lightest,
+          foreground: darkest,
+          border: colors.gray[200],
+          input: colors.gray[200],
+          ring: colors.gray[200],
+          primary: {
+            DEFAULT: colors.sky[300],
+            hover: colors.sky[200],
+            foreground: darkest,
+          },
+          secondary: {
+            DEFAULT: colors.lime[500],
+            hover: colors.lime[400],
+            foreground: darkest,
+          },
+          danger: {
+            DEFAULT: colors.red[500],
+            hover: colors.red[400],
+            foreground: lightest,
+          },
+          success: {
+            DEFAULT: colors.teal[500],
+            hover: colors.teal[400],
+            foreground: darkest,
+          },
+          warn: {
+            DEFAULT: colors.teal[500],
+            hover: colors.teal[400],
+            foreground: lightest,
+          },
+          muted: {
+            DEFAULT: colors.gray[500],
+            hover: colors.gray[400],
+            foreground: lightest,
+          },
+          accent: {
+            DEFAULT: colors.teal[600],
+            hover: colors.teal[500],
+            foreground: lightest,
+          },
+          popover: {
+            DEFAULT: lightest,
+            foreground: darkest,
+          },
+          card: {
+            DEFAULT: lightest,
+            foreground: darkest,
+          },
+        },
+      },
+    },
+    {
+      name: 'dark',
+      selectors: ['.dark', '[data-theme="dark"]'],
+      theme: {
+        colors: {
+          background: darkest,
+          foreground: lightest,
+          border: colors.gray[800],
+          input: colors.gray[950],
+          ring: colors.gray[800],
+          muted: {
+            DEFAULT: colors.gray[600],
+            hover: colors.gray[500],
+            foreground: lightest,
+          },
+          popover: {
+            DEFAULT: darkest,
+            foreground: lightest,
+          },
+          card: {
+            DEFAULT: darkest,
+            foreground: lightest,
+          },
+        },
+      },
+    },
+  ],
+})
+
 module.exports = {
-  darkMode: ['class'],
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     container: {
       center: true,
@@ -11,45 +108,10 @@ module.exports = {
       },
     },
     extend: {
-      colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-      },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        lg: '0.6rem',
+        md: '0.3rem',
+        sm: '0.1rem',
       },
       keyframes: {
         'accordion-down': {
@@ -67,5 +129,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [themeSwapperPlugin],
 }
