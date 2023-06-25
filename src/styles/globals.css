@@ -84,25 +84,25 @@
   h4,
   h5,
   h6 {
-    @apply font-display uppercase font-semibold text-primary-title;
+    @apply font-display uppercase text-primary;
   }
 
   h1 {
-    @apply text-6xl;
+    @apply text-5xl leading-10;
   }
 
   h2 {
-    @apply text-5xl;
+    @apply text-3xl;
   }
 
   h3 {
-    @apply text-4xl;
+    @apply text-2xl;
   }
   h4 {
-    @apply text-3xl;
+    @apply text-xl;
   }
   h5 {
-    @apply text-2xl;
+    @apply text-lg;
   }
   h6 {
     @apply text-base;

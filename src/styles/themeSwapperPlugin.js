@@ -29,9 +29,8 @@ const defaultLightTheme = {
       input: colors.gray[200],
       ring: colors.gray[200],
       primary: {
-        DEFAULT: customEmerald[500],
-        hover: customEmerald[400],
-        title: customEmerald[800],
+        DEFAULT: customEmerald[800],
+        hover: customEmerald[700],
         foreground: lightest,
       },
       secondary: {

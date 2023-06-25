@@ -1,3 +1,4 @@
+import { Navbar } from '@/components/Navbar'
 import '@/styles/globals.css'
 
 export const metadata = {
@@ -8,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="light">
-      <body>{children}</body>
+      <body className="">
+        <Navbar />
+        <main className="flex min-h-screen flex-col items-center gap-8 p-8 md:p-24">{children}</main>
+      </body>
     </html>
   )
 }
